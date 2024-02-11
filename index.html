@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Weather Dashboard</title>
+  </head>
+  <body>
+    <script src="script.js"></script>
+    <div class="wrapper">
+      <div class="container">
+        <!-- Right Part -->
+
+        <div class="weather-content">
+          <div class="city-date">
+            <div class="city"><span id="cityName"></span></div>
+            <div class="date-and-time">
+              <div class="date">02.02.2024</div>
+              <div class="time">12:27</div>
+            </div>
+            <div class="searchBar">
+              <input
+                type="search"
+                name=""
+                id="submit"
+                placeholder="search here"
+              />
+            </div>
+          </div>
+
+          <div class="temperature-humidity">
+            <div class="location-temp">
+              <div class="temp">
+                <h2><span id="Temp"></span></h2>
+              </div>
+              <div class="humidity">
+                <div class="hummy">
+                  <img width="18" height="18" src="images/wind.svg" alt="" />
+                  <p class="speed"><span id="Wind_speed"></span>mph</p>
+                </div>
+                <div class="dew">
+                  <img width="14" height="14" src="images/drop.svg" alt="" />
+                  <p class="speed"><span id="Humidity"></span>%</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="cloud-pct">
+              Cloud PCT : <span id="Cloud_pct"></span>
+            </div>
+          </div>
+
+          <!-- <div class="different-location">
+            <div class="location-card">
+              <div>Longitude :<span id="lon"></span></div>
+              <div>Latitude :<span id="lat"></span></div>
+            </div>
+          </div> -->
+        </div>
+        <!-- Left Part -->
+        <div class="forcast">
+          <div class="time-set">Good Morning</div>
+          <div class="feelsLike">Feels Like :</div>
+          <div class="content">
+            <div class="currTemp"><span id="Feels_like"></span>°</div>
+
+            <div class="currHumid">
+              <div class="hummy">
+                <img width="18" height="18" src="images/wind.svg" alt="" />
+                <p class="speed"><span id="speed"></span></p>
+              </div>
+              <div class="dew">
+                <img width="14" height="14" src="images/drop.svg" alt="" />
+                <p class="speed"><span id="Humid"></span>%</p>
+              </div>
+            </div>
+          </div>
+          <div class="mainForcast">
+            <div class="hourly-forcast">
+              <h2>Detailed Forecast</h2>
+            </div>
+
+            <div class="mainCard">
+              <div class="mintemp">Min Temp : <span id="Min_temp"></span>°</div>
+              <div class="maxtemp">Max Temp : <span id="Max_temp"></span>°</div>
+              <div class="Winddegree">
+                Wind Degree : <span id="Wind_degrees"></span>
+              </div>
+              <div class="sunrise">Sun Rise : <span id="Sunrise"></span></div>
+              <div class="sunset">Sun Set : <span id="Sunset"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
