@@ -65,30 +65,30 @@ getWeather("DELHI");
 
 
 
-const url2 = 'https://open-weather13.p.rapidapi.com/city/'+ city;
-const options2 = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'f2943f6703mshd9ed180470b0b14p1a35d4jsnf397d668c1ee',
-		'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
-	}
-};
+// const url2 = 'https://open-weather13.p.rapidapi.com/city/russia';
+// const options2 = {
+// 	method: 'GET',
+// 	headers: {
+// 		'X-RapidAPI-Key': 'f2943f6703mshd9ed180470b0b14p1a35d4jsnf397d668c1ee',
+// 		'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
+// 	}
+// };
 
 
-const getcoords = (city)=>{
+// const getcoords = ()=>{
 
-    fetch('https://open-weather13.p.rapidapi.com/city/russia', options2)
-    .then(response => response.json())
-    .then(response => {
-        console.log(response)
-        lon.innerHTML=response.coords.lon
-        lat.innerHTML=response.coords.lat
+//     fetch('https://open-weather13.p.rapidapi.com/city/russia', options2)
+//     .then(response => response.json())
+//     .then(response => {
+//         console.log(response)
+//         lon.innerHTML=response.coords.lon
+//         lat.innerHTML=response.coords.lat
         
-    })
-    .catch(err => console.error(err));
+//     })
+//     .catch(err => console.error(err));
     
-}
-getcoords("DELHI");
+// }
+// getcoords("DELHI");    //limit exceeded
 
 
 
