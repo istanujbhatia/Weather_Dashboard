@@ -1,3 +1,19 @@
+document.addEventListener("DOMContentLoaded", function() {
+    let d = new Date();
+    document.getElementById("date").innerHTML = d.toLocaleDateString();
+    document.getElementById("time").innerHTML = d.toLocaleTimeString();
+});
+
+function updateTime() {
+    let currentDate = new Date();
+    document.getElementById("time").innerHTML = currentDate.toLocaleTimeString();
+}
+
+// Update time every second (1000 milliseconds)
+setInterval(updateTime, 1000);
+
+// Initial update when the DOM is loaded
+
 
 const options = {
     method: 'GET',
@@ -42,6 +58,7 @@ const getWeather = (city)=>{
         speed.innerHTML = response.wind_speed
         Wind_degrees.innerHTML = response.wind_degrees
         Sunrise.innerHTML = convertTimestampToTime(response.sunrise)
+
         Sunset.innerHTML = convertTimestampToTime(response.sunset)
     })
     .catch(err => console.error(err));
@@ -62,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
 });
 
 getWeather("DELHI");
-
 
 
 // const url2 = 'https://open-weather13.p.rapidapi.com/city/russia';
