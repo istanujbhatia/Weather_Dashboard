@@ -1,6 +1,16 @@
 // document.addEventListener("DOMContentLoaded", function() {
     let d = new Date();
     document.getElementById("date").innerHTML = d.toDateString();
+    if(d.getHours()<12){
+        salutation.innerHTML="Good Morning"
+    }
+    else if(d.getHours()>12 && d.getHours()<17){
+        salutation.innerHTML="Good Afternoon"
+    }
+    else{
+        salutation.innerHTML="Good Evening"
+
+    }
 // }); //display date and time
 
 function updateTime() {
@@ -54,8 +64,9 @@ const getWeather = (city)=>{
         speed.innerHTML = response.wind_speed
         Wind_degrees.innerHTML = response.wind_degrees
         Sunrise.innerHTML = convertTimestampToTime(response.sunrise)
-
         Sunset.innerHTML = convertTimestampToTime(response.sunset)
+        
+
     })
     .catch(err => console.error(err));
     
