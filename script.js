@@ -1,19 +1,15 @@
-document.addEventListener("DOMContentLoaded", function() {
+// document.addEventListener("DOMContentLoaded", function() {
     let d = new Date();
-    document.getElementById("date").innerHTML = d.toLocaleDateString();
-    document.getElementById("time").innerHTML = d.toLocaleTimeString();
-});
+    document.getElementById("date").innerHTML = d.toDateString();
+// }); //display date and time
 
 function updateTime() {
     let currentDate = new Date();
     document.getElementById("time").innerHTML = currentDate.toLocaleTimeString();
-}
+} //function to update time every second
 
 // Update time every second (1000 milliseconds)
 setInterval(updateTime, 1000);
-
-// Initial update when the DOM is loaded
-
 
 const options = {
     method: 'GET',
@@ -65,18 +61,13 @@ const getWeather = (city)=>{
     
 }
 
-document.addEventListener('DOMContentLoaded', function(e) {
-    // Get the input field
-    var searchInput = document.getElementById('submit');
-    // Add an event listener for the input event
-    searchInput.addEventListener('input', function() {
-        // Retrieve the value from the input field
-        e.preventDefault()
-        getWeather(searchInput.value.toUpperCase());
-        getcoords(searchInput.value.toUpperCase())
-        
-    });
-});
+
+function getLocation() {
+    // Get the input location function
+    var locationInput = document.getElementById("locationInput");
+    getWeather(locationInput.value.toUpperCase());
+    
+}
 
 getWeather("DELHI");
 
@@ -85,29 +76,41 @@ getWeather("DELHI");
 // const options2 = {
 // 	method: 'GET',
 // 	headers: {
-// 		'X-RapidAPI-Key': 'f2943f6703mshd9ed180470b0b14p1a35d4jsnf397d668c1ee',
-// 		'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
-// 	}
-// };
-
-
-// const getcoords = ()=>{
-
-//     fetch('https://open-weather13.p.rapidapi.com/city/russia', options2)
-//     .then(response => response.json())
-//     .then(response => {
-//         console.log(response)
-//         lon.innerHTML=response.coords.lon
-//         lat.innerHTML=response.coords.lat
-        
-//     })
-//     .catch(err => console.error(err));
+    // 		'X-RapidAPI-Key': 'f2943f6703mshd9ed180470b0b14p1a35d4jsnf397d668c1ee',
+    // 		'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
+    // 	}
+    // };
     
-// }
-// getcoords("DELHI");    //limit exceeded
-
-
-
-
-
-
+    
+    // const getcoords = ()=>{
+        
+        //     fetch('https://open-weather13.p.rapidapi.com/city/russia', options2)
+        //     .then(response => response.json())
+        //     .then(response => {
+            //         console.log(response)
+            //         lon.innerHTML=response.coords.lon
+            //         lat.innerHTML=response.coords.lat
+            
+            //     })
+            //     .catch(err => console.error(err));
+            
+            // }
+            // getcoords("DELHI");    //limit exceeded
+            
+            
+            
+            
+            
+            // document.addEventListener('DOMContentLoaded', function(e) {
+            //     // Get the input field
+            //     var searchInput = document.getElementById('submit');
+            //     // Add an event listener for the input event
+            //     searchInput.addEventListener('input', function() {
+            //         // Retrieve the value from the input field
+            //         e.preventDefault()
+            //         getcoords(searchInput.value.toUpperCase())
+                    
+            //     });
+            // });
+            
+            
