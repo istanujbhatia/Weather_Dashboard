@@ -38,6 +38,7 @@
     height: 80px;
 }
 
+
 .city{
     font-size: 38px;
     font-weight: 900;
@@ -48,6 +49,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+.btn{
+    border-radius: 8px;
+    padding: 5px;
 }
 
 .date-and-time .time{

@@ -63,11 +63,15 @@ const getWeather = (city)=>{
 
 
 function getLocation() {
-    // Get the input location function
     var locationInput = document.getElementById("locationInput");
+    if(locationInput==null){
+        getWeather(delhi);
+    }
+    else{
     getWeather(locationInput.value.toUpperCase());
-    
-}
+    }
+}        // Get the input location function
+
 
 getWeather("DELHI");
 
