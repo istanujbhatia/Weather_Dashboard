@@ -52,7 +52,12 @@
 }
 .btn{
     border-radius: 8px;
-    padding: 5px;
+    padding: 5;
+    width: 168px;
+    font-size: 18px;
+}
+.btn:hover{
+    cursor: pointer;
 }
 
 .date-and-time .time{
@@ -68,6 +73,11 @@
 .searchBar input{
     border-radius: 8px;
     padding: 5px;
+}
+.searchBar input:hover{
+    border-radius: 8px;
+    padding: 5px;
+    background-color: aliceblue;
 }
 
 .temperature-humidity{
@@ -98,7 +108,7 @@
 
 .mainCard{
    width: 130%;
-   height: 250px;
+   height: 200px;
    border-radius: 15px;
    font-weight: 800; 
    padding: 15px;
@@ -124,9 +134,10 @@
 .location-card{
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     height: 17vh;
-    border-radius: 7px;
+    border-radius: 50px;
     width: 44vw;
     text-align: center;
+    margin-top: 20px;
 }
 
 .location-card div{
