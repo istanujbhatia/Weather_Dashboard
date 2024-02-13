@@ -41,6 +41,7 @@ function timebycord(timeZone) {
     // Initial call to update the time
     updateformatedtime(timeZone);
 }
+//this function display date and time according to the timezone
 //gives time , zone specific
 //earllier using setInterval(updateFormattedTime, 1000); it gives a glich as it updates every secound and 1st we get normal time then it is converted which gives a delay therefore used requestAnimationFrame(updateformatedtime); this RequestAnimationFrame() is an animation method in JavaScript that tells the browser to call a function and update the animation before the next repaint.
 
