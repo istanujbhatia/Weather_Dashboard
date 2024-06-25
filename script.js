@@ -1,46 +1,50 @@
-function displaySalutation(timeZone){
-    let date = new Date();
-    let options = {
-        hour: 'numeric',
-        hour12: false,
-        timeZone: timeZone
-    };
+// function displaySalutation(timeZone){
+//     let date = new Date();
+//     let options = {
+//         hour: 'numeric',
+//         hour12: false,
+//         timeZone: timeZone
+//     };
 
-    let d= date.toLocaleTimeString("en-US", options);
-    let hr = parseInt(d, 10);
+//     let d= date.toLocaleTimeString("en-US", options);
+//     let hr = parseInt(d, 10);
     
-    if(hr<12){
-        salutation.innerHTML="Good Morning"
-    }
-    else if(hr>12 && hr<17){
-        salutation.innerHTML="Good Afternoon"
-    }
-    else{
-        salutation.innerHTML="Good Evening"
+//     if(hr<12){
+//         salutation.innerHTML="Good Morning"
+//     }
+//     else if(hr>12 && hr<17){
+//         salutation.innerHTML="Good Afternoon"
+//     }
+//     else{
+//         salutation.innerHTML="Good Evening"
 
-    }
-}//this function takes argument i.e. timeZone from api2 , usine toLocaleTimeString and giving an object i.e. options as parameters which gives only hours string of that place in 24hr , zone specific
+//     }
+// }//this function takes argument i.e. timeZone from api2 , usine toLocaleTimeString and giving an object i.e. options as parameters which gives only hours string of that place in 24hr , zone specific
 //then converted that hr in int using parseint with base 10 means decimal
 //according to the time displayed the salutaions
 
 
 
-function timebycord(timeZone) {
+// function timebycord(timeZone) {
     
-    // Create a new Date object
-    function updateformatedtime(timeZone) {
-        let date = new Date();
-        document.getElementById("time").innerHTML = date.toLocaleTimeString("en-US", { timeZone: `${timeZone}` });
-        document.getElementById("date").innerHTML = date.toDateString("en-US", { timeZone: `${timeZone}` });
-        // Call the function again on the next animation frame
-        requestAnimationFrame(function () {
-            updateformatedtime(timeZone);
-        });
-    }
+//     // Create a new Date object
+//     function updateformatedtime(timeZone) {
+//         let date = new Date();
+//         document.getElementById("time").innerHTML = date.toLocaleTimeString("en-US", { timeZone: `${timeZone}` });
+//         document.getElementById("date").innerHTML = date.toDateString("en-US", { timeZone: `${timeZone}` });
+//         // Call the function again on the next animation frame
+//         requestAnimationFrame(function () {
+//             updateformatedtime(timeZone);
+//         });
+//     }
     
-    // Initial call to update the time
-    updateformatedtime(timeZone);
-}
+//     // Initial call to update the time
+//     updateformatedtime(timeZone);
+// }
+function fahrenheitToCelsius(fahrenheit) {
+    return (fahrenheit - 32) * 5 / 9;
+  }
+
 //this function display date and time according to the timezone
 //gives time , zone specific
 //earllier using setInterval(updateFormattedTime, 1000); it gives a glich as it updates every secound and 1st we get normal time then it is converted which gives a delay therefore used requestAnimationFrame(updateformatedtime); this RequestAnimationFrame() is an animation method in JavaScript that tells the browser to call a function and update the animation before the next repaint.
@@ -65,79 +69,88 @@ function convertTimestampToTime(timestamp) {
 
 
 
-//api1
-const options = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Key': 'f2943f6703mshd9ed180470b0b14p1a35d4jsnf397d668c1ee',
-        'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
-    }    
-};    
-const url = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Delhi';
-
-//api1 function
-const getWeather = (city)=>{
+// function convertTo24HrFormat(utcTime, timezoneOffset) {
+//     // Parse the input UTC time string to get hours and minutes
+//     const [utcHours, utcMinutes] = utcTime.split(':').map(Number);
     
-    fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city , options)
-    .then(response => response.json())
-    .then(response => {
-        console.log(response)
+//     // Convert the timezone offset from seconds to hours
+//     const offsetHours = timezoneOffset / 3600;
+    
+//     // Calculate the local time hours and minutes
+//     let localHours = utcHours + offsetHours;
+//     let localMinutes = utcMinutes;
+
+//     // Handle the cases where local hours are outside the range [0, 23]
+//     if (localHours >= 24) {
+//         localHours -= 24;
+//     } else if (localHours < 0) {
+//         localHours += 24;
+//     }
+    
+//     // Format the hours and minutes to always be two digits
+//     const formattedHours = localHours.toString().padStart(2, '0');
+//     const formattedMinutes = localMinutes.toString().padStart(2, '0');
+
+//     // Return the local time in 24-hour format
+//     return `${formattedHours}:${formattedMinutes}`;
+// }
+
+// Example usage:
+ // Timezone offset in seconds (e.g., -18000 for UTC-5)
+
+
+
+
+
+// //api1 function
+let getWeather = async function (city){
+    const url = `https://open-weather13.p.rapidapi.com/city/${city}/EN`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': 'f2943f6703mshd9ed180470b0b14p1a35d4jsnf397d668c1ee',
+            'x-rapidapi-host': 'open-weather13.p.rapidapi.com'
+        }
+    };
+    
+    try {
+        const result = await fetch(url, options);
+        const response = await result.json();
+        console.log(response);
         cityName.innerHTML = city
-        Temp.innerHTML = response.temp + "°"
-        Cloud_pct.innerHTML = response.cloud_pct
-        Feels_like.innerHTML = response.feels_like 
-        Humidity.innerHTML = response.humidity
-        Humid.innerHTML = response.humidity
-        Min_temp.innerHTML = response.min_temp
-        Max_temp.innerHTML = response.max_temp
-        Wind_speed.innerHTML = response.wind_speed
-        speed.innerHTML = response.wind_speed
-        Wind_degrees.innerHTML = response.wind_degrees
-        Sunrise.innerHTML = convertTimestampToTime(response.sunrise)
-        Sunset.innerHTML = convertTimestampToTime(response.sunset)
-    })
-    .catch(err => console.error(err));
-}//desplaying specific info fetched by the api1
+        Temp.innerHTML = fahrenheitToCelsius(response.main.temp).toFixed() + "°"
+        Cloud_pct.innerHTML = response.clouds.all
+        Feels_like.innerHTML = fahrenheitToCelsius(response.main.feels_like).toFixed()
+        Humidity.innerHTML = response.main.humidity
+        Humid.innerHTML = response.main.humidity
+        Min_temp.innerHTML = response.main.temp_min
+        Max_temp.innerHTML = response.main.temp_max
+        Wind_speed.innerHTML = response.wind.speed
+        speed.innerHTML = response.wind.speed
+        Wind_degrees.innerHTML = response.wind.deg
+        Sunrise.innerHTML = convertTimestampToTime(response.sys.sunrise)
+        Sunset.innerHTML = convertTimestampToTime(response.sys.sunset)
+        lat.innerHTML=response.coord.lat;
+        lon.innerHTML=response.coord.lon;
+        // const utcTime = "12:00"; // UTC time in HH:MM format
+        // const timezoneOffset = response.sys.timezone
+        // const localTime = convertTo24HrFormat(utcTime, timezoneOffset);
+
+        // timebycord(response.timezone);
+        // displaySalutation(response.timezone);
 
 
-
-
-
-
-//api 2
-const options2 = {
-    method: 'GET',
-	headers: {
-        'X-RapidAPI-Key': 'f2943f6703mshd9ed180470b0b14p1a35d4jsnf397d668c1ee',
-		'X-RapidAPI-Host': 'ai-weather-by-meteosource.p.rapidapi.com'
-	}
+    } catch (error) {
+        console.error(error);
+    }
 }
-const url2 = 'https://ai-weather-by-meteosource.p.rapidapi.com/find_places?text=Delhi&language=en';
-//api2 function
-const getweather2 = (city)=>{
-    fetch( 'https://ai-weather-by-meteosource.p.rapidapi.com/find_places?text='+ city + '&language=en', options2)
-    .then(response => response.json())
-    .then(response => {
-        console.log(response)
-        lat.innerHTML=response[0].lat;
-        lon.innerHTML=response[0].lon;
-        timebycord(response[0].timezone);
-        displaySalutation(response[0].timezone);
-    })
-    .catch(err => console.error(err));
-};//desplaying specific info fetched by the api1
-
-
-
-
-
+//api 1
 
 
 function getLocation() {
     var locationInput = document.getElementById("locationInput");
     
     getWeather(locationInput.value.toUpperCase());
-    getweather2(locationInput.value.toUpperCase());
     
 } // Get the input location function
 //this function is called whenever the user click the submit button 
@@ -146,21 +159,5 @@ function getLocation() {
 
 
 getWeather("DELHI");
-getweather2("DELHI");
+
 //api fetch by default
-
-
-
-
-
-//TRIALS
-
-//display salutation according to time , change this according to searched place time not your time // have to update this function (remarks)
-
-// function updateTime() {
-//     let currentDate = new Date();
-//     document.getElementById("time").innerHTML = currentDate.toLocaleTimeString();
-// } //function to update time every second
-
-// // Update time every second (1000 milliseconds)
-// setInterval(updateTime, 1000);
